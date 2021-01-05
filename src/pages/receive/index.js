@@ -99,7 +99,7 @@ export default function Receive() {
               <p className='receive__title'>Total Balance</p>
               <Row align='middle' style={{height: '100%'}}>
                 <Col span={12}>
-                  <p>SEL: {payload.portfolio.data.balance}</p>
+                  <p>SEL: {payload.portfolio.token}</p>
                 </Col>
                 <Col span={12}>
                   
