@@ -1,25 +1,69 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { 
+  Dashboard,
+  Login,
+  Signup, 
+  VerifyPhone, 
+  Transaction, 
+  Send, 
+  Receive, 
+  Profile, 
+  VerifyAddPhone, 
+  VerifyUser, 
+  Getwallet 
+} from './pages';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+} from "react-router-dom";
+import './styles/App.css';
+import { ProtectedRoute } from './helpers/routes';
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <Switch>
+        <Route exact path='/login' component={Login}/>
+        <Route exact path='/signup' component={Signup}/>
+        <Route exact path='/verifyphone' component={VerifyPhone}/>
+        <Route exact path='/verifyaddphone' component={VerifyAddPhone}/>
+        <ProtectedRoute 
+          exact
+          path='/'
+          component={Dashboard}
+        />
+        <ProtectedRoute 
+          exact
+          path='/transaction'
+          component={Transaction}
+        />
+        <ProtectedRoute 
+          exact
+          path='/send'
+          component={Send}
+        />
+        <ProtectedRoute 
+          exact
+          path='/receive'
+          component={Receive}
+        />
+        <ProtectedRoute 
+          exact
+          path='/profile'
+          component={Profile}
+        />
+        <ProtectedRoute 
+          exact
+          path='/getwallet'
+          component={Getwallet}
+        />
+        <ProtectedRoute 
+          exact
+          path='/verifyuser'
+          component={VerifyUser}
+        />
+      </Switch>
+    </Router>
+  )
 }
-
-export default App;
